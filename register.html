@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: lightblue;
+        }
+
+        table {
+            width: 400px;
+            margin: auto;
+            background-color: rgb(167, 215, 231);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 1rem;
+            border-color: white;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border-width: 2px;
+        }
+
+        .gender-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .gender-options input {
+            margin-right: 5px;
+        }
+
+        #submit {
+            margin-left: 46%;
+            margin-top: 1%;
+            background-color: rgb(177, 172, 172);
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Register</h1></center>
+    <form id="myForm">
+        <table>
+            <tr>
+                <td><label for="firstname">First Name</label></td>
+                <td><input type="text" id="firstname" name="firstname" required /></td>
+            </tr>
+            <tr>
+                <td><label for="lastname">Last Name</label></td>
+                <td><input type="text" id="lastname" name="lastname" required /></td>
+            </tr>
+            <tr>
+                <td><label>Gender</label></td>
+                <td class="gender-options">
+                    <input type="radio" id="male" name="gender" value="male" required />
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female" required />
+                    <label for="female">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="course">Course</label></td>
+                <td>
+                    <select id="course" name="course" required>
+                        <option value="">Select</option>
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="ECE">ECE</option>
+                        <option value="EEE">EEE</option>
+                        <option value="CSE AIML">CSE AIML</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="username">User Name</label></td>
+                <td><input type="text" id="username" name="username" placeholder="Username" required /></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td>
+                    <input type="password" id="password" name="password" placeholder="Password" required />
+                    <span id="passerror" class="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="confirm-password">Confirm Password</label></td>
+                <td>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="state">State</label></td>
+                <td><input type="text" id="state" name="state" placeholder="State" required /></td>
+            </tr>
+            <tr>
+                <td><label for="country">Country</label></td>
+                <td><input type="text" id="country" name="country" placeholder="Country" required /></td>
+            </tr>
+            <tr>
+                <td><label for="dob">DOB</label></td>
+                <td>
+                    <input type="date" id="dob" name="dob" />
+                    <span id="ageshow"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="age">Age</label></td>
+                <td><input type="text" id="age" name="age" placeholder="Age"/></td>
+            </tr>
+        </table>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('myForm');
+        const password = document.getElementById('password');
+        const confirmPass = document.getElementById('confirm-password');
+        const passerror = document.getElementById('passerror');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Always prevent default
+
+            passerror.textContent = '';
+
+            if (password.value !== confirmPass.value) {
+                passerror.textContent = 'Passwords do not match!';
+                password.focus();
+                return;
+            }
+            window.location.href = 'thankyou.html';
+        });
+    </script>
+</body>
+</html>
